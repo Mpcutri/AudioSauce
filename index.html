@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Head icon -->
+    <link rel="icon" type="image/png" href="assets/images/AudioSauce.png">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css">
+    <!-- Link to W3Schools for side panels -->
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/css/uikit.min.css" />
+    <!-- Link to local CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
+  
+
+    <title>AudioSauce</title>
+</head>
+
+<body>
+    <div class="col s1">
+            <span class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage-right"><span id="social-icon-button" uk-icon="icon: social; ratio: 2"></span></span>
+    </div>
+    <div class="col s1">
+            <span class="uk-button uk-button-default uk-margin-small-right" type="button" uk-toggle="target: #offcanvas-usage-left"><span id="world-icon-button" uk-icon="icon: world; ratio: 2"></span></span>
+    </div>
+    <section class="header">
+        <div class="col s12 m6">
+            <img id="logo" src="assets/images/AudioSauceWhite.png" height=40% width=40%>
+        </div>
+        <div>
+            <p>
+
+            </p>
+        </div>
+    </section>
+    <div class="information-input scale-transition">
+        <form>
+            <div>
+                <label id="username-text" for="username-input">Username</label>
+                    <br>
+                <input type="text" id="username-input" aria-describedby="emailHelp" placeholder=". . .">
+                    <br>
+            </div>
+            <div id="location-input-container">
+                <label id="city-text" for="city-input">City</label>
+                    <br>
+                <input type="search" id="city-input" placeholder=". . .">
+                <p id="or-text">
+                – Or –
+                </p>
+                <div>
+                    <label for="zipcode-input">Zip Code</label>
+                        <br>
+                    <input type="search" id="zipcode-input" placeholder=". . .">
+                </div>
+                <br>
+            </div>
+          <button id="submit-button" type="submit" class="btn btn-primary">GO!</button>
+        </form>
+    </div>
+
+    <!-- MUSIC BOX -->
+    <div class="music-box scale-transition scale-out">
+        <div id="song-name">
+            <p>
+                Song Name
+            </p>
+        </div>
+            <br>
+        <div id="artist-name">
+            <p>
+                Artist Name
+            </p>
+        </div>
+            <br>
+        <div id="music-buttons">
+                <button id="previous"><img src="assets/images/previous.png"/></button>
+                <button id="pause"><img src="assets/images/pause.png"/></button>
+                <button id="play"><img src="assets/images/play.png"/></button>
+                <button id="next"><img src="assets/images/next.png"/></button>
+        </div>
+            <br>
+
+    </div>
+
+    <!-- COLLAPSABLE LEFT -->
+
+    <div class="uk-offcanvas-content">
+
+        <!-- The whole page content goes here -->
+        <div id="offcanvas-usage-left" uk-offcanvas="flip: true">
+            <div class="uk-offcanvas-bar" id="right-bar">
+
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+                <section class="weather-panel">
+                    <div>
+                        <h3 id="weather-welcome-text"><span id="city-name2"></span>'s<br>current weather:</h3>
+                        <div>
+                            <img id="sunshine" width=20% height=20% src="assets/images/sunIcon.gif"/><!-- add city name through javascript -->
+                        </div>
+                    </div>
+                        <br>
+                    <div class="weather-drop">
+                
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- COLLAPSABLE RIGHT -->
+
+    <div class="uk-offcanvas-content">
+
+        <!-- The whole page content goes here -->
+        <div id="offcanvas-usage-right" uk-offcanvas>
+            <div class="uk-offcanvas-bar" id="left-bar">
+
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+                <section class="chat-panel">
+                    <div>
+                        <h3 id="chat-welcome-text">Welcome to the <span id="city-name">your city</span> chat!</h3> <!-- add city name through javascript -->
+                    </div>
+                    <div class="chatroom-drop">
+                    </div>
+                    <div>
+                        <label id="" for="username-input">What's on your mind?</label>
+                            <br>
+                        <section class="user-chat">
+                            <div class="row">
+                                <div class="col s9">
+                                    <input type="text" id="chatroom-textbox" aria-describedby="emailHelp" placeholder=". . .">
+                                </div>
+                                <div class="col s3">
+                                    <button id="send-chat-button" type="submit" class="btn btn-primary">Send</button>
+                                </div>
+                            </div>
+                        </section>
+                            <br>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.39/js/uikit-icons.min.js"></script>
+    <!-- moment js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js"></script>
+    <!-- personal js -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/spotify.js"></script>
+    
+</body>
+</html>
