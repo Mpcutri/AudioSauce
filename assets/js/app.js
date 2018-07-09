@@ -33,7 +33,7 @@ var weatherLoaded = false;
 // Running on page load
 $(document).ready(function(){
   if (!spotifyAccessToken && window.location.href.includes("github.io")) {
-    window.location = "https://polar-headland-83144.herokuapp.com/login?callback=" + window.location.href;
+    window.location = "https://mpcutri.github.io/AudioSauce/callback=?" + window.location.href;
   } else {
     getLocation();
   }
