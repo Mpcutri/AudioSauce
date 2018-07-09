@@ -24,7 +24,7 @@ var weatherSearchString;
 var userCity = "";
 var userZipcode = "";
 var cityName; // Retrieved from API
-var queryParams = parseQueryString(window.location.search.substr(1));
+var queryParams = "https://mpcutri.github.io/AudioSauce/";
 var spotifyAccessToken = queryParams.access_token;
 var currentPlaylist;
 var currentPlaylistID;
