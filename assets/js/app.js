@@ -24,7 +24,7 @@ var weatherSearchString;
 var userCity = "";
 var userZipcode = "";
 var cityName; // Retrieved from API
-var queryParams = "https://mpcutri.github.io/AudioSauce/";
+var queryParams = parseQueryString(window.location.search.substr(1));
 var spotifyAccessToken = queryParams.access_token;
 var currentPlaylist;
 var currentPlaylistID;
@@ -33,7 +33,7 @@ var weatherLoaded = false;
 // Running on page load
 $(document).ready(function(){
   if (!spotifyAccessToken && window.location.href.includes("github.io")) {
-    window.location = "https://mpcutri.github.io/AudioSauce/callback=?" + window.location.href;
+    window.location = "https://mpcutri.github.io/AudioSauce?" + window.location.href;
   } else {
     getLocation();
   }
