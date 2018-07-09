@@ -24,7 +24,8 @@ var weatherSearchString;
 var userCity = "";
 var userZipcode = "";
 var cityName; // Retrieved from API
-var spotifyAccessToken = "access_token=BQBksWJKsk8mk4PT4PXEo0W2tfBmA8zOxZQx5jGnlLIKRzBy_gTIR3adAGHhFO0PkmHwzvlEcx2oOgHXicIg-nphApJ1dAiMcklD8zfmi5s38Bc4RWMFy1Gqpd6NVpNUamvrcjQpOCB6KBzE3LkrJFXJEMkpR8UPzJ0vha_ON8w&refresh_token=AQB-B8ZxmNPsYgTg92n2gov66KtdVyURrQOnqm1lzHCFjH_vjjN6jjmb7AeJuD9ArbYiR6GYm4L9ma3YmfMY2j2_HZUHXMYOyFCIb9qfNdopXtx1-fgJbGzJ3wk-vrLsua4"
+var queryParams = parseQueryString(window.location.search.substr(1));
+var spotifyAccessToken = queryParams.access_token;
 var currentPlaylist;
 var currentPlaylistID;
 var spotifyLoaded = false;
@@ -32,7 +33,7 @@ var weatherLoaded = false;
 // Running on page load
 $(document).ready(function(){
   if (!spotifyAccessToken && window.location.href.includes("github.io")) {
-    window.location = "https://mpcutri.github.io/AudioSauce/callback=?" + spotifyAccessToken;
+    window.location = "https://elliotreed.github.io/AudioSauce/?access_token=BQDIiwj_QOoX2SpdEyRDU9RVH7u9qYQQa1wUs72kBoZrqtEHNWa2IjpquAgJhZvswKZx00SLoOtT2LL7WAIAnwk3-lDZrY-0O0Wq_OspixiriqSrhD_bwemss5IwUh-dOoaHUyNancTEZNLQO2VNn1HIVIyeZQP5YBsbxm9lztI&refresh_token=AQCTd3XiVkd12o0cAXKKvZSWABu8pnW9AyGUe5CAa2rPRUuBo1SSYrsNeoOdP1mJousiJgX-FkyggtQG6jcrUo23GdL-GmDRcU90KSSLahsxox8Rdi6_6c23jzaq9UNm_Xw";
   } else {
     getLocation();
   }
